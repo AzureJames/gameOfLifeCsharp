@@ -70,21 +70,21 @@ for (int frames = 0; frames < 790; frames++)
             count = 0;
             if (grid[i][j] == '+') { grid[i][j] = ' '; } //kill
             if (grid[i][j] == 'k') { grid[i][j] = '#'; } //bring to life
-                                                         //normal 
-            if (j > 0 && (grid[i][j - 1] == '#' || grid[i][j - 1] == '+') ) { count++; } //x- axis      full or dying counts   past #_
-            if (j < gridWidth - 1 && (grid[i][j + 1] == '#' || grid[i][j + 1] == 'k')) { count++; } //x+ axis    birth counts as alive   future  #@
+                                                         
+            if (j > 0 && (grid[i][j - 1] == '#' || grid[i][j - 1] == '+') ) { count++; } //x- axis      full or dying counts   past (#_)
+            if (j < gridWidth - 1 && (grid[i][j + 1] == '#' || grid[i][j + 1] == 'k')) { count++; } //x+ axis    birth counts as alive   future  (#@)
 
-            if ((j > 0 && i > 0) && (grid[i-1][j - 1] == '#' || grid[i-1][j - 1] == '+')) { count++; } //x- and y axis -     full or dying counts   past?
-            if ((i < gridHeight - 1 && j > 0) && (grid[i + 1][j - 1] == '#' || grid[i + 1][j - 1] == 'k')) { count++; } //x- and y axis +     full or dying counts  future?
+            if ((j > 0 && i > 0) && (grid[i-1][j - 1] == '#' || grid[i-1][j - 1] == '+')) { count++; } //x- and y axis -     full or dying counts   past
+            if ((i < gridHeight - 1 && j > 0) && (grid[i + 1][j - 1] == '#' || grid[i + 1][j - 1] == 'k')) { count++; } //x- and y axis +     full or dying counts  future
 
-            if ((i>0 && j < gridWidth - 1) && (grid[i - 1][j + 1] == '#' || grid[i - 1][j + 1] == '+')) { count++; } //x+ and y axis +     full or dying counts  past?
-            if ((i< gridHeight-1 && j<gridWidth-1) && (grid[i + 1][j + 1] == '#' || grid[i + 1][j + 1] == 'k')) { count++; } //x+ and y axis +     full or dying counts  future?
+            if ((i>0 && j < gridWidth - 1) && (grid[i - 1][j + 1] == '#' || grid[i - 1][j + 1] == '+')) { count++; } //x+ and y axis +     full or dying counts  past
+            if ((i< gridHeight-1 && j<gridWidth-1) && (grid[i + 1][j + 1] == '#' || grid[i + 1][j + 1] == 'k')) { count++; } //x+ and y axis +     full or dying counts  future
 
-            if (i > 0 && (grid[i - 1][j] == '#' || grid[i-1][j] == '+')) { count++; } //y axis -   full or dying counts   past?
-            if (i < gridHeight-1 && (grid[i + 1][j] == '#' || grid[i + 1][j] == 'k')) { count++; } //y axis +  birth last round as alive  future?
+            if (i > 0 && (grid[i - 1][j] == '#' || grid[i-1][j] == '+')) { count++; } //y axis -   full or dying counts   past
+            if (i < gridHeight-1 && (grid[i + 1][j] == '#' || grid[i + 1][j] == 'k')) { count++; } //y axis +  birth last round as alive  future
 
-            if (grid[i][j] == '#' && (count < 2 || count > 3)) { grid[i][j] = '+'; } //dying _
-            else if (grid[i][j] == ' ' && (count == 3)) { grid[i][j] = 'k'; } //birthing @  rep , with space
+            if (grid[i][j] == '#' && (count < 2 || count > 3)) { grid[i][j] = '+'; } //dying 
+            else if (grid[i][j] == ' ' && (count == 3)) { grid[i][j] = 'k'; } //birthing 
         }
 
         Console.WriteLine(grid[i]);
